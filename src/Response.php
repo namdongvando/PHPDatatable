@@ -53,7 +53,7 @@ class Response
     {
         return json_encode($items, JSON_UNESCAPED_UNICODE);
     }
-    public function ToArray()
+    public function ToRow()
     {
         $r = (array) $this;
         $r["totalPage"] = ceil($this->totalrows / $this->number);
