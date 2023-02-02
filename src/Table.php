@@ -126,7 +126,7 @@ class Table
                     ?>
                         <th <?php
                             echo isset($this->widthcolums[$colIndex]) ?
-                                "width:'" . $this->widthcolums[$colIndex] . "'"
+                                "style='width:" . $this->widthcolums[$colIndex] . "'"
                                 : "" ?>><?php echo $key == "Actions" ? "Action" : $title; ?></th>
                     <?php
                         $colIndex++;
