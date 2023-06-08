@@ -76,7 +76,7 @@ class Table
                     <?php
                     foreach ($this->GetColumns() as $columnName => $title) {
                     ?>
-                        <td><?php echo $row[$columnName]; ?></td>
+                        <td><?php echo $row[$columnName]??""; ?></td>
                     <?php
                     }
                     ?>
@@ -149,7 +149,7 @@ class Table
                         foreach ($this->GetColumns() as $columnName => $title) {
                         ?>
                             <td>
-                                <?php echo $row[$columnName]; ?>
+                                <?php echo $row[$columnName]??""; ?>
                             </td>
                         <?php
                         }
