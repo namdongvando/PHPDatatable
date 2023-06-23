@@ -45,6 +45,8 @@ class Table
         $col = $this->columns;
         if ($this->hasActions == true) {
             $col["Actions"] = $col["Actions"] ?? "lblActions";
+        } else {
+            unset($col["Actions"]);
         }
         return $col;
     }
