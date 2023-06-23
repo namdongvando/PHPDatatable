@@ -44,21 +44,23 @@ class Table
     {
         $col = $this->columns;
         if ($this->hasActions == true) {
-            $col["Actions"] = "lblAction";
+            $col["Actions"] = $col["Actions"] ?? "lblActions";
         }
         return $col;
     }
     public function GetHtml()
     {
         $className = $this->classname;
-?>
+        ?>
         <table class="table table-border">
             <tr class="bg-primary">
                 <?php
                 foreach ($this->GetColumns() as $key => $title) {
-                ?>
-                    <th><?php echo $key == "Actions" ? "Action" : $title; ?></th>
-                <?php
+                    ?>
+                    <th>
+                        <?php echo $title; ?>
+                    </th>
+                    <?php
                 }
                 ?>
             </tr>
@@ -71,21 +73,23 @@ class Table
                         $row[$k] = $v;
                     }
                 }
-            ?>
+                ?>
                 <tr>
                     <?php
                     foreach ($this->GetColumns() as $columnName => $title) {
-                    ?>
-                        <td><?php echo $row[$columnName]??""; ?></td>
-                    <?php
+                        ?>
+                        <td>
+                            <?php echo $row[$columnName] ?? ""; ?>
+                        </td>
+                        <?php
                     }
                     ?>
                 </tr>
-            <?php
+                <?php
             }
             ?>
         </table>
-    <?php
+        <?php
     }
 
     public function setPropTable($table)
@@ -116,19 +120,21 @@ class Table
     public function RenderHtml()
     {
         $className = $this->classname;
-    ?>
+        ?>
         <table <?php echo $this->tableProp; ?>>
             <thead <?php echo $this->theadProp; ?>>
                 <tr>
                     <?php
                     $colIndex = 0;
                     foreach ($this->GetColumns() as $key => $title) {
-                    ?>
+                        ?>
                         <th <?php
-                            echo isset($this->widthcolums[$colIndex]) ?
-                                "style='width:" . $this->widthcolums[$colIndex] . "'"
-                                : "" ?>><?php echo $key == "Actions" ? "Action" : $title; ?></th>
-                    <?php
+                        echo isset($this->widthcolums[$colIndex]) ?
+                            "style='width:" . $this->widthcolums[$colIndex] . "'"
+                            : "" ?>>
+                            <?php echo $title; ?>
+                        </th>
+                        <?php
                         $colIndex++;
                     }
                     ?>
@@ -143,24 +149,24 @@ class Table
                             $row[$k] = $v;
                         }
                     }
-                ?>
+                    ?>
                     <tr>
                         <?php
                         foreach ($this->GetColumns() as $columnName => $title) {
-                        ?>
+                            ?>
                             <td>
-                                <?php echo $row[$columnName]??""; ?>
+                                <?php echo $row[$columnName] ?? ""; ?>
                             </td>
-                        <?php
+                            <?php
                         }
                         ?>
                     </tr>
-                <?php
+                    <?php
                 }
                 ?>
             </tbody>
         </table>
-<?php
+        <?php
     }
     public function GetlinkPTByAction($params, $link = "")
     {

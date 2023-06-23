@@ -6,7 +6,7 @@ interface ITable
 {
     public function BtnGroup();
     public function ToRow();
- 
+
 }
 
 ?>
